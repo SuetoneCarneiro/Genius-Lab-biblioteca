@@ -1,11 +1,45 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Leitor</title>
+    <title>Login - Genius Lab</title>
 </head>
 <body>
-    <h1>Página de Login do Leitor</h1>
+    <h1>Login do leitor</h1>
+</body>
+</html>-->
+{% load crispy_forms_tags %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Genius Lab</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="card p-4 shadow" style="width: 100%; max-width: 400px;">
+            <!-- Logo da biblioteca -->
+            <div class="text-center mb-4">
+                <img src="{% static 'img/login-leitor.png' %}" alt="Genius Lab Logo" class="img-fluid rounded-circle" style="max-width: 200px;">
+            </div>
+            <!-- Formulário de login -->
+            <h4 class="text-center mb-4">Login - Leitor</h4>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+            </form>
+            <!-- Link para cadastro -->
+            <div class="text-center mt-3">
+                <p class="mb-0">Ainda não tem cadastro? <a href="">Cadastre-se</a></p>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

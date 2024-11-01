@@ -43,7 +43,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pages.apps.PagesConfig',
     'users.apps.UsersConfig',
+    'crispy_forms',
+    'crispy_bootstrap4',
 ]
+
+# Configuração para o crispy forms trabalhar com bootstrap
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -135,3 +140,10 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Configurações de autenticação
+
+LOGIN_REDIRECT_URL = 'biblioteca'
+LOGOUT_REDIRECT_URL = 'inicio'
+
+LOGIN_URL = 'login'
