@@ -31,10 +31,10 @@
             <!-- Blocos de Login -->
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <a href="/admin-login" class="btn btn-primary btn-block">Login como Administrador</a>
+                    <a href="{% url 'login-admin' %}" class="btn btn-primary btn-block">Login como Administrador</a>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <a href="/user-login" class="btn btn-info btn-block">Login como Leitor</a>
+                    <a href="{% url 'login' %}" class="btn btn-info btn-block">Login como Leitor</a>
                 </div>
             </div>
 
