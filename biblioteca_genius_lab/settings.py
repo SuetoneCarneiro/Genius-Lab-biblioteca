@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pages.apps.PagesConfig',
     'users.apps.UsersConfig',
+    'biblioteca.apps.BibliotecaConfig',
     'crispy_forms',
     'crispy_bootstrap4',
 ]
