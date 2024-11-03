@@ -14,11 +14,11 @@ class Usuario(models.Model):
         return f'{self.nome_completo} - {self.email}'
 
 class Livro(models.Model):
-    isbn = models.CharField(max_length=13, unique=True, verbose_name='ISBN')
+    isbn = models.CharField(max_length=17, unique=True, verbose_name='ISBN')
     titulo = models.CharField(max_length=255, verbose_name='Título')
     autor = models.CharField(max_length=255, verbose_name='Autor')
     editora = models.CharField(max_length=255, verbose_name='Editora')
-    ano_publicacao = models.DateField(verbose_name='Ano de Publicação')
+    ano_publicacao = models.PositiveIntegerField(verbose_name='Ano de Publicação')
     genero = models.CharField(max_length=100, verbose_name='Gênero')
     quantidade_disponivel = models.PositiveIntegerField(verbose_name='Quantidade Disponível')
     descricao = models.TextField(blank=True, null=True, verbose_name='Descrição')
