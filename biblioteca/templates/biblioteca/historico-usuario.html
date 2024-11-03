@@ -1,0 +1,21 @@
+{% extends 'biblioteca/modelo.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block titulo %}
+    <title>Histórico</title>
+    {% endblock %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">    
+   
+</head>
+<body>
+    {% block content %}
+    <h1>Histórico de empréstimos</h1>
+    {% endblock %}
+
+</body>
+</html>

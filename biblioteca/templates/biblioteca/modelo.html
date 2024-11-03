@@ -38,14 +38,14 @@
                       <a class="nav-link text-white" href="{% url 'biblioteca' %}">Acervo</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link text-white ml-4" href="#">Solicitar Empréstimo</a>
+                      <a class="nav-link text-white ml-4" href="{% url 'emprestimo' %}">Solicitar Empréstimo</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link text-white ml-4" href="#">Ver Histórico</a>
+                      <a class="nav-link text-white ml-4" href="{% url 'historico' %}">Ver Histórico</a>
                   </li>
                   {% if user.is_staff %}
                   <li class="nav-item">
-                      <a class="nav-link text-white ml-4" href="#">Área do Administrador</a>
+                      <a class="nav-link text-white ml-4" href="{% url 'administracao' %}">Área do Administrador</a>
                   </li>
                   {% endif %}
                   <li class="nav-item">

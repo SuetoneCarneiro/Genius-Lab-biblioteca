@@ -15,9 +15,43 @@
 </head>
 <body>
     {% block content %}
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <h1 class="my-5">Seja bem-vind@ ao nosso acervo!</h1>
+    </div>
     
-    <h1>Conteúdo do acervo</h1>
-    {% endblock %}
+    <div class="row">
+        {% for livro in object_list %}
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm rounded" style="transition: transform 0.2s;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ livro.titulo }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ livro.autor }}</h6>
+                    <p class="card-text"><strong>Gênero:</strong> {{ livro.genero }}</p>
+                    <p class="card-text"><strong>Quantidade disponível:</strong> {{ livro.quantidade_disponivel }}</p>
+                    <p class="card-text">{{ livro.descricao }}</p>
+                    <a href="{% url 'emprestimo' %}" class="btn btn-primary">Solicitar empréstimo</a>
+                </div>
+            </div>
+        </div>
+        <style>
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            }
+        </style>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-info" role="alert">
+                Nenhum livro registrado
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+
 
 </body>
 </html>
