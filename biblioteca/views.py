@@ -1,10 +1,11 @@
+from django.shortcuts import redirect
 from django.views.generic.list import ListView
 from pages.models import Livro, Emprestimo
 from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView
 
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 # Create your views here.
 
 class BibliotecaView(LoginRequiredMixin, ListView):
@@ -39,7 +40,18 @@ class HistoricoView(LoginRequiredMixin, ListView):
         return self.object_list
     
 
-class AdmView(LoginRequiredMixin, TemplateView):
+class AdmView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
     login_url = reverse_lazy('login')
     template_name= 'biblioteca/admin-area.html'
+
+    def test_func(self): # permite apenas superusers nessa página
+        return self.request.user.is_superuser
+    
+    def handle_no_permission(self):
+        # Redireciona o usuário para a biblioteca, caso esteja logado
+        if self.request.user.is_authenticated:
+            return redirect('biblioteca') 
+        else:
+            # se não estiver logado, redireciona para login
+            return redirect(self.login_url)
 
