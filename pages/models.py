@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import date, timedelta
 
 # Create your models here.
 
@@ -31,12 +32,12 @@ class Emprestimo(models.Model):
     id_emprestimo = models.AutoField(primary_key=True)
     status = models.CharField(
         max_length=20,
-        choices=[('em_aberto', 'Em Aberto'), ('concluido', 'Concluído')],
-        default='em_aberto',
+        choices=[('solicitado', 'Solicitado'),('em_aberto', 'Em Aberto'), ('concluido', 'Concluído')],
+        default='solicitado',
         verbose_name='Status'
     )
     data_emprestimo = models.DateField(auto_now_add=True, verbose_name='Data do Empréstimo')
-    data_devolucao = models.DateField(null=True, blank=True, verbose_name='Data de Devolução')
+    data_devolucao = models.DateField(default=date.today() + timedelta(days=7), verbose_name='Data de Devolução')
     fk_usuario = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Usuário')
     fk_livro = models.ForeignKey(Livro, on_delete=models.CASCADE, verbose_name='Livro')
 
