@@ -10,12 +10,48 @@
     <title>Histórico</title>
     {% endblock %}
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">    
-   
 </head>
 <body>
-    {% block content %}
-    <h1>Histórico de empréstimos</h1>
-    {% endblock %}
-
+    <div class="container mt-5">
+        {% block content %}
+        <h1 class="text-center my-4">Histórico de Empréstimos</h1>
+        
+        <div class="card">
+            <div class="card-body">
+                {% if object_list %}
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Data do Empréstimo</th>
+                            <th scope="col">Data de Devolução</th>
+                            <th scope="col">Livro</th>
+                            <th scope="col">Status do Empréstimo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for emprestimo in object_list %}
+                        <tr>
+                            <td>{{ emprestimo.data_emprestimo }}</td>
+                            <td>{{ emprestimo.data_devolucao }}</td>
+                            <td>{{ emprestimo.fk_livro }}</td>
+                            <td>{{ emprestimo.status }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="3" class="text-center">Não há empréstimos cadastrados</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <div class="alert alert-warning text-center" role="alert">
+                    Não há empréstimos cadastrados.
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endblock %}
+    </div>
+   
 </body>
 </html>

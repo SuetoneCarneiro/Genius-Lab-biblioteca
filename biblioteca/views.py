@@ -1,6 +1,7 @@
 from django.views.generic.list import ListView
-from pages.models import Livro
+from pages.models import Livro, Emprestimo
 from django.views.generic import TemplateView
+from django.views.generic.edit import CreateView
 
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -11,14 +12,32 @@ class BibliotecaView(LoginRequiredMixin, ListView):
     template_name = 'biblioteca/biblioteca.html'
     model = Livro # Listar elementos do meu banco de dados - nesse caso, os livros
 
-class EmprestimoView(LoginRequiredMixin, TemplateView):
+class EmprestimoView(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
     template_name= 'biblioteca/form-emprestimo.html'
+    model = Emprestimo
+    fields = ['fk_livro','data_devolucao' ] # a data de empréstimo é a data atual
+    success_url = reverse_lazy('biblioteca')
+
+    def form_valid(self, form):
+
+        # automaticamente relaciona o usuário logado ao empréstimo
+        form.instance.fk_usuario = self.request.user
+        url = super().form_valid(form)
+
+        return url
 
 
-class HistoricoView(LoginRequiredMixin, TemplateView):
+class HistoricoView(LoginRequiredMixin, ListView):
     login_url = reverse_lazy('login')
     template_name= 'biblioteca/historico-usuario.html'
+    model = Emprestimo
+
+    def get_queryset(self):
+        # Lista apenas empréstimos do usuário logado
+        self.object_list = Emprestimo.objects.filter(fk_usuario=self.request.user)
+        return self.object_list
+    
 
 class AdmView(LoginRequiredMixin, TemplateView):
     login_url = reverse_lazy('login')
