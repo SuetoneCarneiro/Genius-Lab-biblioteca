@@ -1,0 +1,59 @@
+{% extends 'biblioteca/modelo.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block titulo %}
+    <title>Gestão de empréstimos</title>
+    {% endblock %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">  
+</head>
+<body>
+
+    {% block content %}
+    <h3 class="text-center mt-3">Gestão de empréstimos</h3>
+    <hr>
+    <div class="table-responsive border-bottom pt-2 mb-4">
+        <table class="table table-striped container">
+                <tr>
+                    <th>Leitor</th>
+                    <th>Livro</th>
+                    <th>Status</th>
+                    <th>Opções</th>
+                </tr>
+
+                {% for emprestimo in object_list %}
+                {% if emprestimo.status == 'solicitado' or emprestimo.status == 'em_aberto' %}
+                <tr>
+                    <td class="py-4">{{ emprestimo.fk_usuario }}</td>
+                    <td class="py-4">{{ emprestimo.fk_livro }}</td>
+                    <td class="py-4">
+                        {% if emprestimo.status == 'em_aberto' %}
+                        Em aberto
+                        {% else %}
+                        Solicitado
+                        {% endif %}
+                    </td>
+                    <td class="btn btn-link py-4"><a href="#">Aprovar/Devolver</a></td>
+                </tr>
+                {% endif %}
+                {% empty %}
+                <tr>
+                    <td colspan="3">Nenhum empréstimo em aberto.</td>
+                </tr>
+
+                {% endfor %}
+
+            </table>
+    </div>
+    <div class="container text-right mt-2">
+        <a href="" class="btn btn-primary mr-4">Registrar novo empréstimo</a>
+    </div>
+    {% endblock %}
+    
+</body>
+</html>

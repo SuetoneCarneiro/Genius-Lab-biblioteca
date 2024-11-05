@@ -77,3 +77,18 @@ class CadLivroView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
             # se não estiver logado, redireciona para login
             return redirect(self.login_url)
 
+class GestaoEmprestimosView(LoginRequiredMixin, UserPassesTestMixin, ListView):
+    login_url = reverse_lazy('login')
+    template_name= 'biblioteca/gestao-emprestimos.html'
+    model = Emprestimo
+
+    def test_func(self): # permite apenas superusers nessa página
+        return self.request.user.is_superuser
+    
+    def handle_no_permission(self):
+        # Redireciona o usuário para a biblioteca, caso esteja logado
+        if self.request.user.is_authenticated:
+            return redirect('biblioteca') 
+        else:
+            # se não estiver logado, redireciona para login
+            return redirect(self.login_url)
