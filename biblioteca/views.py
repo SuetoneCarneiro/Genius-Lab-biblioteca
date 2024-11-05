@@ -13,6 +13,7 @@ class BibliotecaView(LoginRequiredMixin, ListView):
     template_name = 'biblioteca/biblioteca.html'
     model = Livro # Listar elementos do meu banco de dados - nesse caso, os livros
 
+
 class EmprestimoView(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
     template_name= 'biblioteca/form-emprestimo.html'
@@ -43,6 +44,27 @@ class HistoricoView(LoginRequiredMixin, ListView):
 class AdmView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
     login_url = reverse_lazy('login')
     template_name= 'biblioteca/admin-area.html'
+
+    def test_func(self): # permite apenas superusers nessa página
+        return self.request.user.is_superuser
+    
+    def handle_no_permission(self):
+        # Redireciona o usuário para a biblioteca, caso esteja logado
+        if self.request.user.is_authenticated:
+            return redirect('biblioteca') 
+        else:
+            # se não estiver logado, redireciona para login
+            return redirect(self.login_url)
+
+
+class CadLivroView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+    login_url = reverse_lazy('login')
+    template_name= 'biblioteca/cadastro-livros.html'
+    model = Livro
+    fields = ['titulo', 'autor', 'isbn', 'editora', 'ano_publicacao',
+               'genero', 'quantidade_disponivel', 'descricao' ] 
+    
+    success_url = reverse_lazy('administrador')
 
     def test_func(self): # permite apenas superusers nessa página
         return self.request.user.is_superuser
