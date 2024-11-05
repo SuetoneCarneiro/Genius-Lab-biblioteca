@@ -34,7 +34,15 @@
                             <td>{{ emprestimo.data_emprestimo }}</td>
                             <td>{{ emprestimo.data_devolucao }}</td>
                             <td>{{ emprestimo.fk_livro }}</td>
-                            <td>{{ emprestimo.status }}</td>
+                            <td>
+                                {% if emprestimo.status == 'em_aberto' %}
+                                Em aberto
+                                {% elif emprestimo.status == 'solicitado' %}
+                                Solicitado
+                                {% else %}
+                                Concluído
+                                {% endif %}
+                            </td>
                         </tr>
                         {% empty %}
                         <tr>
