@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import date, timedelta
+from django.utils import timezone
 
 # Create your models here.
 
@@ -36,7 +37,7 @@ class Emprestimo(models.Model):
         default='solicitado',
         verbose_name='Status'
     )
-    data_emprestimo = models.DateField(auto_now_add=True, verbose_name='Data do Empréstimo')
+    data_emprestimo = models.DateField(default=timezone.now(), verbose_name='Data do Empréstimo')
     data_devolucao = models.DateField(default=date.today() + timedelta(days=7), verbose_name='Data de Devolução')
     fk_usuario = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Usuário')
     fk_livro = models.ForeignKey(Livro, on_delete=models.CASCADE, verbose_name='Livro')

@@ -20,7 +20,7 @@ class EmprestimoView(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
     template_name= 'biblioteca/form-emprestimo.html'
     model = Emprestimo
-    fields = ['fk_livro','data_devolucao', 'fk_usuario', 'status' ] # a data de empréstimo é a data atual
+    fields = ['fk_livro', 'data_emprestimo','data_devolucao', 'fk_usuario', 'status' ] # a data de empréstimo é a data atual
     success_url = reverse_lazy('biblioteca')
 
     def get_form(self, form_class=None):
@@ -133,7 +133,7 @@ class GestaoEmprestimosView(LoginRequiredMixin, UserPassesTestMixin, ListView):
 
 class EditarEmprestimoView(UpdateView):
     model = Emprestimo
-    fields = ['id_emprestimo','fk_usuario', 'fk_livro', 'status', 'data_devolucao']
+    fields = ['id_emprestimo','fk_usuario', 'fk_livro', 'status','data_devolucao']
     template_name = 'edit-emprestimos'
     success_url = reverse_lazy('emprestimos')
 
