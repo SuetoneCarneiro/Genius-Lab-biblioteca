@@ -27,21 +27,30 @@ class EmprestimoView(LoginRequiredMixin, CreateView):
         
         # Verificar se o usuário é superusuário
         if not self.request.user.is_staff:
-            form.fields['fk_usuario'].widget.attrs['disabled'] = True
-            form.fields['status'].widget.attrs['disabled'] = True
+            # fk_usuario e status automaticamente atreladas ao usuário logado
+            form.instance.fk_usuario = self.request.user
+            form.instance.status = 'solicitado'
+
+            # ocultando fk_usuario e status para usuários comuns
             form.fields['fk_usuario'].widget = HiddenInput()
             form.fields['status'].widget = HiddenInput()
+
+            # Campos ocultos tenham os valores certos
+            form.fields['fk_usuario'].initial = self.request.user
+            form.fields['status'].initial = 'solicitado'
 
         return form
 
     def form_valid(self, form):
+        # Verifica se os valores dos campos ocultos estão definidos
+        if not form.instance.fk_usuario:
+            form.instance.fk_usuario = self.request.user
+        if not form.instance.status:
+            form.instance.status = 'solicitado'
 
-        # automaticamente relaciona o usuário logado ao empréstimo
-        form.instance.fk_usuario = self.request.user
+        # formulário válido -> salva o empréstimo
         url = super().form_valid(form)
-
         return url
-
 
 class HistoricoView(LoginRequiredMixin, ListView):
     login_url = reverse_lazy('login')
