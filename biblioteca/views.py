@@ -3,7 +3,7 @@ from django.shortcuts import redirect
 from django.views.generic.list import ListView
 from pages.models import Livro, Emprestimo
 from django.views.generic import TemplateView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -105,3 +105,17 @@ class GestaoEmprestimosView(LoginRequiredMixin, UserPassesTestMixin, ListView):
         else:
             # se não estiver logado, redireciona para login
             return redirect(self.login_url)
+
+
+class EditarEmprestimoView(UpdateView):
+    model = Emprestimo
+    fields = ['id_emprestimo','fk_usuario', 'fk_livro', 'status', 'data_devolucao']
+    template_name = 'edit-emprestimos'
+    success_url = reverse_lazy('emprestimos')
+
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+
+        return form
+
+    

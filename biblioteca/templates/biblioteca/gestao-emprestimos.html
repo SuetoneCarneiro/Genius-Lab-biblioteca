@@ -38,7 +38,7 @@
                         Solicitado
                         {% endif %}
                     </td>
-                    <td class="btn btn-link py-4"><a href="#">Aprovar/Devolver</a></td>
+                    <td class="btn btn-link py-4"><a href="{% url 'editar' emprestimo.id_emprestimo %}">Aprovar/Devolver</a></td>
                 </tr>
                 {% endif %}
                 {% empty %}
