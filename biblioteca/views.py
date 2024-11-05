@@ -1,3 +1,4 @@
+from django.forms import HiddenInput
 from django.shortcuts import redirect
 from django.views.generic.list import ListView
 from pages.models import Livro, Emprestimo
@@ -18,8 +19,20 @@ class EmprestimoView(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
     template_name= 'biblioteca/form-emprestimo.html'
     model = Emprestimo
-    fields = ['fk_livro','data_devolucao' ] # a data de empréstimo é a data atual
+    fields = ['fk_livro','data_devolucao', 'fk_usuario', 'status' ] # a data de empréstimo é a data atual
     success_url = reverse_lazy('biblioteca')
+
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        
+        # Verificar se o usuário é superusuário
+        if not self.request.user.is_staff:
+            form.fields['fk_usuario'].widget.attrs['disabled'] = True
+            form.fields['status'].widget.attrs['disabled'] = True
+            form.fields['fk_usuario'].widget = HiddenInput()
+            form.fields['status'].widget = HiddenInput()
+
+        return form
 
     def form_valid(self, form):
 
