@@ -17,6 +17,13 @@
     {% block content %}
     <h3 class="text-center mt-3">Gestão de empréstimos</h3>
     <hr>
+    {% if messages %}
+            {% for message in messages %}
+                <div class="container pb-2 pt-2 bg-success">
+                    <p class="text-white">{{ message }}</p>
+                </div>
+            {% endfor %}
+        {% endif %}
     <div class="table-responsive border-bottom pt-2 mb-4">
         <table class="table table-striped container">
                 <tr>

@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.forms import HiddenInput
 from django.shortcuts import redirect
 from django.views.generic.list import ListView
@@ -48,6 +49,20 @@ class EmprestimoView(LoginRequiredMixin, CreateView):
         if not form.instance.status:
             form.instance.status = 'solicitado'
 
+
+        # Lógica para diminuir 1 livro quando for solicitado o empréstimo
+
+        livro = form.cleaned_data['fk_livro']
+
+        # Verificar se há exemplares disponíveis
+        if livro.quantidade_disponivel <= 0:
+            messages.error(self.request, "não há exemplares disponíveis para empréstimo.")
+            return redirect('emprestimo')  # Redireciona para a página do formulário
+        
+        # Reduz a quantidade disponível
+        livro.quantidade_disponivel -= 1
+        livro.save()  # Salva a alteração no banco de dados
+
         # formulário válido -> salva o empréstimo
         url = super().form_valid(form)
         return url
@@ -86,7 +101,7 @@ class CadLivroView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     fields = ['titulo', 'autor', 'isbn', 'editora', 'ano_publicacao',
                'genero', 'quantidade_disponivel', 'descricao' ] 
     
-    success_url = reverse_lazy('administrador')
+    success_url = reverse_lazy('biblioteca')
 
     def test_func(self): # permite apenas superusers nessa página
         return self.request.user.is_superuser
@@ -126,5 +141,19 @@ class EditarEmprestimoView(UpdateView):
         form = super().get_form(form_class)
 
         return form
+    
+    def form_valid(self, form):
+        # Obtém o objeto de empréstimo atual antes de salvar o novo status
+        emprestimo = self.get_object()
+        livro = emprestimo.fk_livro
+
+        # Verifica se o status foi alterado para "concluído"
+        if form.cleaned_data['status'] == 'concluido' and emprestimo.status != 'concluido':
+            # Soma 1 à quantidade disponível do livro
+            livro.quantidade_disponivel += 1
+            livro.save()  # Salva a alteração no banco de dados
+            messages.success(self.request, f"Empréstimo {emprestimo.id_emprestimo} concluído. Livro devolvido com sucesso.")
+
+        return super().form_valid(form)
 
     
