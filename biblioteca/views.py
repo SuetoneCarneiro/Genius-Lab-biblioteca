@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.forms import HiddenInput
 from django.shortcuts import redirect
 from django.views.generic.list import ListView
+from biblioteca.forms import RelatorioFiltroForm
 from pages.models import Livro, Emprestimo
 from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView, UpdateView
@@ -156,4 +157,48 @@ class EditarEmprestimoView(UpdateView):
 
         return super().form_valid(form)
 
+    
+class RelatoriosView(LoginRequiredMixin,UserPassesTestMixin, ListView):
+    login_url = reverse_lazy('login')
+    template_name= 'biblioteca/relatorios.html'
+    model = Emprestimo
+    context_object_name = 'emprestimos'
+
+    def test_func(self): # permite apenas superusers nessa página
+        return self.request.user.is_superuser
+    
+    def handle_no_permission(self):
+        # Redireciona o usuário para a biblioteca, caso esteja logado
+        if self.request.user.is_authenticated:
+            return redirect('biblioteca') 
+        else:
+            # se não estiver logado, redireciona para login
+            return redirect(self.login_url)
+        
+    
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        self.form = RelatorioFiltroForm(self.request.GET)
+        
+        if self.form.is_valid():
+            data_inicio = self.form.cleaned_data.get('data_inicio')
+            data_fim = self.form.cleaned_data.get('data_fim')
+            status = self.form.cleaned_data.get('status')
+
+            # Filtro por data
+            if data_inicio:
+                queryset = queryset.filter(data_emprestimo__gte=data_inicio)
+            if data_fim:
+                queryset = queryset.filter(data_emprestimo__lte=data_fim)
+            
+            # Filtro por status
+            if status:
+                queryset = queryset.filter(status=status)
+                
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = self.form
+        return context
     

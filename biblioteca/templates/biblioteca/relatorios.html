@@ -1,0 +1,63 @@
+{% extends 'biblioteca/modelo.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block titulo %}
+    <title>Relatórios</title>
+    {% endblock %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"> 
+</head>
+<body>
+    {% block content %}
+    <h3 class="text-center mt-3">Página de relatórios</h3>
+    
+
+    <form method="get" class="form-inline justify-content-center my-3 border p-4">
+        <div class="px-4">{{ form.data_inicio|as_crispy_field }}</div>
+        <div class="px-4">{{ form.data_fim|as_crispy_field }}</div>
+        <div class="px-4">{{ form.status|as_crispy_field }}</div>
+        <button type="submit" class="btn btn-primary ml-2">Filtrar</button>
+        <a href="{% url 'relatorios' %}" class="btn btn-secondary ml-2">Limpar filtros</a>
+    </form>
+
+    <div class="table-responsive border-bottom pt-2 mb-4">
+        <table class="table table-striped container">
+                <tr>
+                    <th>Leitor</th>
+                    <th>Livro</th>
+                    <th>Data de empréstimo</th>
+                    <th>Status</th>
+                </tr>
+
+                {% for emprestimo in object_list %}
+                <tr>
+                    <td>{{ emprestimo.fk_usuario }}</td>
+                    <td>{{ emprestimo.fk_livro }}</td>
+                    <td>{{ emprestimo.data_emprestimo }}</td>
+                    <td>
+                        {% if emprestimo.status == 'em_aberto' %}
+                        Em aberto
+                        {% elif emprestimo.status == 'solicitado' %}
+                        Solicitado
+                        {% else %}
+                        Concluído
+                        {% endif %}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3">Nenhum empréstimo no período pesquisado</td>
+                </tr>
+
+                {% endfor %}
+
+            </table>
+    </div>
+    {% endblock %}
+</body>
+</html>
