@@ -5,9 +5,11 @@ from django.contrib.auth.forms import UserCreationForm
 
 class UsuarioForm(UserCreationForm):
     email = forms.EmailField()
-    endereco = forms.CharField(max_length=255, required=False, label='Endereço')
+    endereco = forms.CharField(
+        max_length=255, required=False, label='Endereço')
     telefone = forms.CharField(max_length=22, required=False, label='Telefone')
 
     class Meta:
-        model = User 
-        fields = ['username', 'email', 'endereco', 'telefone','password1', 'password2', 'is_staff']
+        model = User
+        fields = ['username', 'email', 'endereco',
+                  'telefone', 'password1', 'password2', 'is_staff']

@@ -11,22 +11,25 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 # Create your views here.
 
+
 class BibliotecaView(LoginRequiredMixin, ListView):
-    login_url = reverse_lazy('login') # apenas usuários logados acessam a biblioteca
+    # apenas usuários logados acessam a biblioteca
+    login_url = reverse_lazy('login')
     template_name = 'biblioteca/biblioteca.html'
-    model = Livro # Listar elementos do meu banco de dados - nesse caso, os livros
+    model = Livro  # Listar elementos do meu banco de dados - nesse caso, os livros
 
 
 class EmprestimoView(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
-    template_name= 'biblioteca/form-emprestimo.html'
+    template_name = 'biblioteca/form-emprestimo.html'
     model = Emprestimo
-    fields = ['fk_livro', 'data_emprestimo','data_devolucao', 'fk_usuario', 'status' ] # a data de empréstimo é a data atual
+    fields = ['fk_livro', 'data_emprestimo', 'data_devolucao',
+              'fk_usuario', 'status']  # a data de empréstimo é a data atual
     success_url = reverse_lazy('biblioteca')
 
     def get_form(self, form_class=None):
         form = super().get_form(form_class)
-        
+
         # Verificar se o usuário é superusuário
         if not self.request.user.is_staff:
             # fk_usuario e status automaticamente atreladas ao usuário logado
@@ -56,16 +59,17 @@ class EmprestimoView(LoginRequiredMixin, CreateView):
         if not form.instance.status:
             form.instance.status = 'solicitado'
 
-
         # Lógica para diminuir 1 livro quando for solicitado o empréstimo
 
         livro = form.cleaned_data['fk_livro']
 
         # Verificar se há exemplares disponíveis
         if livro.quantidade_disponivel <= 0:
-            messages.error(self.request, "não há exemplares disponíveis para empréstimo.")
-            return redirect('emprestimo')  # Redireciona para a página do formulário
-        
+            messages.error(
+                self.request, "não há exemplares disponíveis para empréstimo.")
+            # Redireciona para a página do formulário
+            return redirect('emprestimo')
+
         # Reduz a quantidade disponível
         livro.quantidade_disponivel -= 1
         livro.save()  # Salva a alteração no banco de dados
@@ -74,28 +78,30 @@ class EmprestimoView(LoginRequiredMixin, CreateView):
         url = super().form_valid(form)
         return url
 
+
 class HistoricoView(LoginRequiredMixin, ListView):
     login_url = reverse_lazy('login')
-    template_name= 'biblioteca/historico-usuario.html'
+    template_name = 'biblioteca/historico-usuario.html'
     model = Emprestimo
 
     def get_queryset(self):
         # Lista apenas empréstimos do usuário logado
-        self.object_list = Emprestimo.objects.filter(fk_usuario=self.request.user)
+        self.object_list = Emprestimo.objects.filter(
+            fk_usuario=self.request.user)
         return self.object_list
-    
+
 
 class AdmView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
     login_url = reverse_lazy('login')
-    template_name= 'biblioteca/admin-area.html'
+    template_name = 'biblioteca/admin-area.html'
 
-    def test_func(self): # permite apenas superusers nessa página
+    def test_func(self):  # permite apenas superusers nessa página
         return self.request.user.is_superuser
-    
+
     def handle_no_permission(self):
         # Redireciona o usuário para a biblioteca, caso esteja logado
         if self.request.user.is_authenticated:
-            return redirect('biblioteca') 
+            return redirect('biblioteca')
         else:
             # se não estiver logado, redireciona para login
             return redirect(self.login_url)
@@ -103,44 +109,46 @@ class AdmView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
 
 class CadLivroView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     login_url = reverse_lazy('login')
-    template_name= 'biblioteca/cadastro-livros.html'
+    template_name = 'biblioteca/cadastro-livros.html'
     model = Livro
     fields = ['titulo', 'autor', 'isbn', 'editora', 'ano_publicacao',
-               'genero', 'quantidade_disponivel', 'descricao' ] 
-    
+              'genero', 'quantidade_disponivel', 'descricao']
+
     success_url = reverse_lazy('biblioteca')
 
-    def test_func(self): # permite apenas superusers nessa página
+    def test_func(self):  # permite apenas superusers nessa página
         return self.request.user.is_superuser
-    
+
     def handle_no_permission(self):
         # Redireciona o usuário para a biblioteca, caso esteja logado
         if self.request.user.is_authenticated:
-            return redirect('biblioteca') 
+            return redirect('biblioteca')
         else:
             # se não estiver logado, redireciona para login
             return redirect(self.login_url)
+
 
 class GestaoEmprestimosView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     login_url = reverse_lazy('login')
-    template_name= 'biblioteca/gestao-emprestimos.html'
+    template_name = 'biblioteca/gestao-emprestimos.html'
     model = Emprestimo
 
-    def test_func(self): # permite apenas superusers nessa página
+    def test_func(self):  # permite apenas superusers nessa página
         return self.request.user.is_superuser
-    
+
     def handle_no_permission(self):
         # Redireciona o usuário para a biblioteca, caso esteja logado
         if self.request.user.is_authenticated:
-            return redirect('biblioteca') 
+            return redirect('biblioteca')
         else:
             # se não estiver logado, redireciona para login
             return redirect(self.login_url)
 
 
-class EditarEmprestimoView(UserPassesTestMixin,UpdateView):
+class EditarEmprestimoView(UserPassesTestMixin, UpdateView):
     model = Emprestimo
-    fields = ['id_emprestimo','fk_usuario', 'fk_livro', 'status','data_devolucao', 'observacoes']
+    fields = ['id_emprestimo', 'fk_usuario', 'fk_livro',
+              'status', 'data_devolucao', 'observacoes']
     template_name = 'edit-emprestimos'
     success_url = reverse_lazy('emprestimos')
 
@@ -148,7 +156,7 @@ class EditarEmprestimoView(UserPassesTestMixin,UpdateView):
         form = super().get_form(form_class)
 
         return form
-    
+
     def form_valid(self, form):
         # Obtém o objeto de empréstimo atual antes de salvar o novo status
         emprestimo = self.get_object()
@@ -159,44 +167,44 @@ class EditarEmprestimoView(UserPassesTestMixin,UpdateView):
             # Soma 1 à quantidade disponível do livro
             livro.quantidade_disponivel += 1
             livro.save()  # Salva a alteração no banco de dados
-            messages.success(self.request, f"Empréstimo {emprestimo.id_emprestimo} concluído. Livro devolvido com sucesso.")
+            messages.success(
+                self.request, f"Empréstimo {emprestimo.id_emprestimo} concluído. Livro devolvido com sucesso.")
 
         return super().form_valid(form)
-    
-    def test_func(self): # permite apenas superusers nessa página
+
+    def test_func(self):  # permite apenas superusers nessa página
         return self.request.user.is_superuser
-    
+
     def handle_no_permission(self):
         # Redireciona o usuário para a biblioteca, caso esteja logado
         if self.request.user.is_authenticated:
-            return redirect('biblioteca') 
+            return redirect('biblioteca')
         else:
             # se não estiver logado, redireciona para login
             return redirect(self.login_url)
 
-    
-class RelatoriosView(LoginRequiredMixin,UserPassesTestMixin, ListView):
+
+class RelatoriosView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     login_url = reverse_lazy('login')
-    template_name= 'biblioteca/relatorios.html'
+    template_name = 'biblioteca/relatorios.html'
     model = Emprestimo
     context_object_name = 'emprestimos'
 
-    def test_func(self): # permite apenas superusers nessa página
+    def test_func(self):  # permite apenas superusers nessa página
         return self.request.user.is_superuser
-    
+
     def handle_no_permission(self):
         # Redireciona o usuário para a biblioteca, caso esteja logado
         if self.request.user.is_authenticated:
-            return redirect('biblioteca') 
+            return redirect('biblioteca')
         else:
             # se não estiver logado, redireciona para login
             return redirect(self.login_url)
-        
-    
+
     def get_queryset(self):
         queryset = super().get_queryset()
         self.form = RelatorioFiltroForm(self.request.GET)
-        
+
         if self.form.is_valid():
             data_inicio = self.form.cleaned_data.get('data_inicio')
             data_fim = self.form.cleaned_data.get('data_fim')
@@ -207,15 +215,14 @@ class RelatoriosView(LoginRequiredMixin,UserPassesTestMixin, ListView):
                 queryset = queryset.filter(data_emprestimo__gte=data_inicio)
             if data_fim:
                 queryset = queryset.filter(data_emprestimo__lte=data_fim)
-            
+
             # Filtro por status
             if status:
                 queryset = queryset.filter(status=status)
-                
+
         return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['form'] = self.form
         return context
-    
