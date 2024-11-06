@@ -41,6 +41,8 @@ class Emprestimo(models.Model):
     data_devolucao = models.DateField(default=date.today() + timedelta(days=7), verbose_name='Data de Devolução')
     fk_usuario = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Usuário')
     fk_livro = models.ForeignKey(Livro, on_delete=models.CASCADE, verbose_name='Livro')
+    # campo observações para registrar informações na devolução dos livros
+    observacoes = models.TextField(null=True, blank=True, verbose_name='Observações')
 
     def __str__(self):
         return f'Empréstimo {self.id_emprestimo} - {self.fk_usuario} - {self.status}'

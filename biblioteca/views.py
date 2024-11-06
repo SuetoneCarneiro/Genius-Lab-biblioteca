@@ -132,9 +132,9 @@ class GestaoEmprestimosView(LoginRequiredMixin, UserPassesTestMixin, ListView):
             return redirect(self.login_url)
 
 
-class EditarEmprestimoView(UpdateView):
+class EditarEmprestimoView(UserPassesTestMixin,UpdateView):
     model = Emprestimo
-    fields = ['id_emprestimo','fk_usuario', 'fk_livro', 'status','data_devolucao']
+    fields = ['id_emprestimo','fk_usuario', 'fk_livro', 'status','data_devolucao', 'observacoes']
     template_name = 'edit-emprestimos'
     success_url = reverse_lazy('emprestimos')
 
@@ -156,6 +156,17 @@ class EditarEmprestimoView(UpdateView):
             messages.success(self.request, f"Empréstimo {emprestimo.id_emprestimo} concluído. Livro devolvido com sucesso.")
 
         return super().form_valid(form)
+    
+    def test_func(self): # permite apenas superusers nessa página
+        return self.request.user.is_superuser
+    
+    def handle_no_permission(self):
+        # Redireciona o usuário para a biblioteca, caso esteja logado
+        if self.request.user.is_authenticated:
+            return redirect('biblioteca') 
+        else:
+            # se não estiver logado, redireciona para login
+            return redirect(self.login_url)
 
     
 class RelatoriosView(LoginRequiredMixin,UserPassesTestMixin, ListView):
