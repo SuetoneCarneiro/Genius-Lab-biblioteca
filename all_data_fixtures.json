@@ -1,0 +1,1134 @@
+[
+    {
+        "model": "admin.logentry",
+        "pk": 1,
+        "fields": {
+            "action_time": "2024-11-01T22:03:11.223Z",
+            "user": 1,
+            "content_type": 4,
+            "object_id": "2",
+            "object_repr": "leitor",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 2,
+        "fields": {
+            "action_time": "2024-11-03T22:05:15.015Z",
+            "user": 1,
+            "content_type": 4,
+            "object_id": "3",
+            "object_repr": "mariana",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 3,
+        "fields": {
+            "action_time": "2024-11-04T13:47:32.337Z",
+            "user": 1,
+            "content_type": 9,
+            "object_id": "3",
+            "object_repr": "Empréstimo 3 - bibliotecario - solicitado",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Data de Devolu\\u00e7\\u00e3o\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 4,
+        "fields": {
+            "action_time": "2024-11-04T23:35:03.984Z",
+            "user": 1,
+            "content_type": 4,
+            "object_id": "4",
+            "object_repr": "teste",
+            "action_flag": 3,
+            "change_message": ""
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 5,
+        "fields": {
+            "action_time": "2024-11-04T23:35:03.984Z",
+            "user": 1,
+            "content_type": 4,
+            "object_id": "6",
+            "object_repr": "teste2",
+            "action_flag": 3,
+            "change_message": ""
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 6,
+        "fields": {
+            "action_time": "2024-11-04T23:35:03.984Z",
+            "user": 1,
+            "content_type": 4,
+            "object_id": "7",
+            "object_repr": "teste3",
+            "action_flag": 3,
+            "change_message": ""
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 7,
+        "fields": {
+            "action_time": "2024-11-05T11:58:45.538Z",
+            "user": 1,
+            "content_type": 9,
+            "object_id": "1",
+            "object_repr": "Empréstimo 1 - mariana - em_aberto",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Status\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 8,
+        "fields": {
+            "action_time": "2024-11-05T12:01:38.459Z",
+            "user": 1,
+            "content_type": 9,
+            "object_id": "2",
+            "object_repr": "Empréstimo 2 - bibliotecario - concluido",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Status\"]}}]"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 1,
+        "fields": {
+            "name": "Can add log entry",
+            "content_type": 1,
+            "codename": "add_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 2,
+        "fields": {
+            "name": "Can change log entry",
+            "content_type": 1,
+            "codename": "change_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 3,
+        "fields": {
+            "name": "Can delete log entry",
+            "content_type": 1,
+            "codename": "delete_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 4,
+        "fields": {
+            "name": "Can view log entry",
+            "content_type": 1,
+            "codename": "view_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 5,
+        "fields": {
+            "name": "Can add permission",
+            "content_type": 2,
+            "codename": "add_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 6,
+        "fields": {
+            "name": "Can change permission",
+            "content_type": 2,
+            "codename": "change_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 7,
+        "fields": {
+            "name": "Can delete permission",
+            "content_type": 2,
+            "codename": "delete_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 8,
+        "fields": {
+            "name": "Can view permission",
+            "content_type": 2,
+            "codename": "view_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 9,
+        "fields": {
+            "name": "Can add group",
+            "content_type": 3,
+            "codename": "add_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 10,
+        "fields": {
+            "name": "Can change group",
+            "content_type": 3,
+            "codename": "change_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 11,
+        "fields": {
+            "name": "Can delete group",
+            "content_type": 3,
+            "codename": "delete_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 12,
+        "fields": {
+            "name": "Can view group",
+            "content_type": 3,
+            "codename": "view_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 13,
+        "fields": {
+            "name": "Can add user",
+            "content_type": 4,
+            "codename": "add_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 14,
+        "fields": {
+            "name": "Can change user",
+            "content_type": 4,
+            "codename": "change_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 15,
+        "fields": {
+            "name": "Can delete user",
+            "content_type": 4,
+            "codename": "delete_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 16,
+        "fields": {
+            "name": "Can view user",
+            "content_type": 4,
+            "codename": "view_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 17,
+        "fields": {
+            "name": "Can add content type",
+            "content_type": 5,
+            "codename": "add_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 18,
+        "fields": {
+            "name": "Can change content type",
+            "content_type": 5,
+            "codename": "change_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 19,
+        "fields": {
+            "name": "Can delete content type",
+            "content_type": 5,
+            "codename": "delete_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 20,
+        "fields": {
+            "name": "Can view content type",
+            "content_type": 5,
+            "codename": "view_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 21,
+        "fields": {
+            "name": "Can add session",
+            "content_type": 6,
+            "codename": "add_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 22,
+        "fields": {
+            "name": "Can change session",
+            "content_type": 6,
+            "codename": "change_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 23,
+        "fields": {
+            "name": "Can delete session",
+            "content_type": 6,
+            "codename": "delete_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 24,
+        "fields": {
+            "name": "Can view session",
+            "content_type": 6,
+            "codename": "view_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 25,
+        "fields": {
+            "name": "Can add usuario",
+            "content_type": 7,
+            "codename": "add_usuario"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 26,
+        "fields": {
+            "name": "Can change usuario",
+            "content_type": 7,
+            "codename": "change_usuario"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 27,
+        "fields": {
+            "name": "Can delete usuario",
+            "content_type": 7,
+            "codename": "delete_usuario"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 28,
+        "fields": {
+            "name": "Can view usuario",
+            "content_type": 7,
+            "codename": "view_usuario"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 29,
+        "fields": {
+            "name": "Can add contem",
+            "content_type": 8,
+            "codename": "add_contem"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 30,
+        "fields": {
+            "name": "Can change contem",
+            "content_type": 8,
+            "codename": "change_contem"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 31,
+        "fields": {
+            "name": "Can delete contem",
+            "content_type": 8,
+            "codename": "delete_contem"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 32,
+        "fields": {
+            "name": "Can view contem",
+            "content_type": 8,
+            "codename": "view_contem"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 33,
+        "fields": {
+            "name": "Can add emprestimo",
+            "content_type": 9,
+            "codename": "add_emprestimo"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 34,
+        "fields": {
+            "name": "Can change emprestimo",
+            "content_type": 9,
+            "codename": "change_emprestimo"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 35,
+        "fields": {
+            "name": "Can delete emprestimo",
+            "content_type": 9,
+            "codename": "delete_emprestimo"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 36,
+        "fields": {
+            "name": "Can view emprestimo",
+            "content_type": 9,
+            "codename": "view_emprestimo"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 37,
+        "fields": {
+            "name": "Can add livro",
+            "content_type": 10,
+            "codename": "add_livro"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 38,
+        "fields": {
+            "name": "Can change livro",
+            "content_type": 10,
+            "codename": "change_livro"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 39,
+        "fields": {
+            "name": "Can delete livro",
+            "content_type": 10,
+            "codename": "delete_livro"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 40,
+        "fields": {
+            "name": "Can view livro",
+            "content_type": 10,
+            "codename": "view_livro"
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$870000$fWe9vwQjgNDsQ6PISnW26r$DyuAaQC4l1lSRiln7qoESI71Y2BzgYVRRyn8P0EBivo=",
+            "last_login": "2024-11-06T12:53:59.558Z",
+            "is_superuser": true,
+            "username": "bibliotecario",
+            "first_name": "",
+            "last_name": "",
+            "email": "suetoneneto12@gmail.com",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2024-10-31T01:38:43.033Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 2,
+        "fields": {
+            "password": "pbkdf2_sha256$870000$Jp7fXn29Un7Ft7bOyuJVwa$Gd5bRAn/d0nnS60iPN/6VHulJtvsFWKxvOIgZw7SaYU=",
+            "last_login": "2024-11-06T11:48:12.182Z",
+            "is_superuser": false,
+            "username": "leitor",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-11-01T22:03:10.582Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 3,
+        "fields": {
+            "password": "pbkdf2_sha256$870000$tuy5NYeonlt7Jy9MYlrALS$kM6xeETuFkJHO7AznsPQu4wYMxWmHQJfXcspX5Xoo+E=",
+            "last_login": "2024-11-06T11:33:16.099Z",
+            "is_superuser": false,
+            "username": "mariana",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-11-03T22:05:14.403Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 5,
+        "fields": {
+            "password": "pbkdf2_sha256$870000$4bJAlSNKqMLL9qMTkN1suW$EBig+i7NkXxtjxYJW9qhVLfBwVr8aZcyXYpLrIl37KY=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Lucio",
+            "first_name": "",
+            "last_name": "",
+            "email": "Lucio@gmail.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-11-04T23:28:32.554Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 1,
+        "fields": {
+            "app_label": "admin",
+            "model": "logentry"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 2,
+        "fields": {
+            "app_label": "auth",
+            "model": "permission"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 3,
+        "fields": {
+            "app_label": "auth",
+            "model": "group"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 4,
+        "fields": {
+            "app_label": "auth",
+            "model": "user"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 5,
+        "fields": {
+            "app_label": "contenttypes",
+            "model": "contenttype"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 6,
+        "fields": {
+            "app_label": "sessions",
+            "model": "session"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 7,
+        "fields": {
+            "app_label": "pages",
+            "model": "usuario"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 8,
+        "fields": {
+            "app_label": "pages",
+            "model": "contem"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 9,
+        "fields": {
+            "app_label": "pages",
+            "model": "emprestimo"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 10,
+        "fields": {
+            "app_label": "pages",
+            "model": "livro"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "7exvjdygofcoinwtt75jgwsrpk3yvxwi",
+        "fields": {
+            "session_data": "e30:1t6zdk:l9twrmC83ARCYVWgFFWE9kjeLCA8lbZxaLK1VMp9wUk",
+            "expire_date": "2024-11-15T21:57:08.324Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "91mkpgrt8el2e45neuxcbpwguvfae71f",
+        "fields": {
+            "session_data": "e30:1t6zeM:_Cp1UQcwcZIJcM0IVzvPkGIW4AwB3_7EE_a3LPCose4",
+            "expire_date": "2024-11-15T21:57:46.389Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "cgwur633lhr9ylsjej1bc7xscqepq07r",
+        "fields": {
+            "session_data": "e30:1t7EVf:QxN7Cu-LYMkikXmgGDblE7srDJMonNtvGgfRqBSFeH0",
+            "expire_date": "2024-11-16T13:49:47.117Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "ipjb34241cs9p20zv7s4xs1k3w3nid69",
+        "fields": {
+            "session_data": "e30:1t6zkK:z-5ammmdR_v7sLt6PlAJmi-Bsrv0q6Oc8kpiomIpPKI",
+            "expire_date": "2024-11-15T22:03:56.113Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "n25aq9olodalg470r7blk3fiifmmze8s",
+        "fields": {
+            "session_data": ".eJxVjDsOwjAQRO_iGllrY_yhpM8ZrPV6jQPIkeKkQtydREoBzRTz3sxbRFyXGtfOcxyzuAolTr9dQnpy20F-YLtPkqa2zGOSuyIP2uUwZX7dDvfvoGKv29oT0PnisOCW2nkfGBJYlzAEbwpQAFYqKzS2kGFdissqkDVYSANZ8fkC29E4CA:1t8fXr:NgCMhyOeIkbeAXRW4tnZHPtCpvzXW5NUOvWLjpWXIcU",
+            "expire_date": "2024-11-20T12:53:59.560Z"
+        }
+    },
+    {
+        "model": "pages.livro",
+        "pk": 1,
+        "fields": {
+            "isbn": "978-3-16-148410-0",
+            "titulo": "O Senhor dos Anéis: A Sociedade do Anel",
+            "autor": "J.R.R. Tolkien",
+            "editora": "HarperCollins",
+            "ano_publicacao": 1954,
+            "genero": "Fantasia",
+            "quantidade_disponivel": 3,
+            "descricao": "Um épico de fantasia que segue a jornada de Frodo Bolseiro."
+        }
+    },
+    {
+        "model": "pages.livro",
+        "pk": 2,
+        "fields": {
+            "isbn": "978-0-7432-7356-5",
+            "titulo": "O Alquimista",
+            "autor": "Paulo Coelho",
+            "editora": "HarperCollins",
+            "ano_publicacao": 1988,
+            "genero": "Ficção",
+            "quantidade_disponivel": 8,
+            "descricao": "Uma história inspiradora sobre seguir os seus sonhos."
+        }
+    },
+    {
+        "model": "pages.livro",
+        "pk": 3,
+        "fields": {
+            "isbn": "978-0-545-01022-1",
+            "titulo": "Harry Potter e a Pedra Filosofal",
+            "autor": "J.K. Rowling",
+            "editora": "Rocco",
+            "ano_publicacao": 1997,
+            "genero": "Fantasia",
+            "quantidade_disponivel": 7,
+            "descricao": "A primeira aventura de Harry Potter no mundo da magia."
+        }
+    },
+    {
+        "model": "pages.livro",
+        "pk": 4,
+        "fields": {
+            "isbn": "978-0-385-66266-5",
+            "titulo": "1984",
+            "autor": "George Orwell",
+            "editora": "Companhia das Letras",
+            "ano_publicacao": 1949,
+            "genero": "Ficção Distópica",
+            "quantidade_disponivel": 8,
+            "descricao": "Uma crítica ao totalitarismo e à vigilância do Estado."
+        }
+    },
+    {
+        "model": "pages.livro",
+        "pk": 5,
+        "fields": {
+            "isbn": "978-0-7432-7356-6",
+            "titulo": "Cem Anos de Solidão",
+            "autor": "Gabriel García Márquez",
+            "editora": "Editora Record",
+            "ano_publicacao": 1967,
+            "genero": "Realismo Mágico",
+            "quantidade_disponivel": 6,
+            "descricao": "A saga da família Buendía na mítica cidade de Macondo."
+        }
+    },
+    {
+        "model": "pages.livro",
+        "pk": 6,
+        "fields": {
+            "isbn": "978-0-451-52884-7",
+            "titulo": "O Pequeno Príncipe",
+            "autor": "Antoine de Saint-Exupéry",
+            "editora": "Editora Agir",
+            "ano_publicacao": 1943,
+            "genero": "Ficção",
+            "quantidade_disponivel": 9,
+            "descricao": "Uma reflexão poética sobre a vida e a natureza humana."
+        }
+    },
+    {
+        "model": "pages.livro",
+        "pk": 7,
+        "fields": {
+            "isbn": "978-0-14-028333-4",
+            "titulo": "A Revolução dos Bichos",
+            "autor": "George Orwell",
+            "editora": "Companhia das Letras",
+            "ano_publicacao": 1945,
+            "genero": "Fábula",
+            "quantidade_disponivel": 4,
+            "descricao": "Uma sátira sobre o totalitarismo usando animais como personagens."
+        }
+    },
+    {
+        "model": "pages.livro",
+        "pk": 8,
+        "fields": {
+            "isbn": "978-0-14-240732-1",
+            "titulo": "Orgulho e Preconceito",
+            "autor": "Jane Austen",
+            "editora": "Penguin Classics",
+            "ano_publicacao": 1813,
+            "genero": "Romance",
+            "quantidade_disponivel": 11,
+            "descricao": "Uma crítica social através da história de Elizabeth Bennet."
+        }
+    },
+    {
+        "model": "pages.livro",
+        "pk": 9,
+        "fields": {
+            "isbn": "978-3-16-148410-1",
+            "titulo": "Moby Dick",
+            "autor": "Herman Melville",
+            "editora": "Harper & Brothers",
+            "ano_publicacao": 1851,
+            "genero": "Aventura",
+            "quantidade_disponivel": 3,
+            "descricao": "A busca obsessiva do Capitão Ahab pela baleia Moby Dick."
+        }
+    },
+    {
+        "model": "pages.livro",
+        "pk": 10,
+        "fields": {
+            "isbn": "978-0-14-312854-0",
+            "titulo": "O Sol é Para Todos",
+            "autor": "Harper Lee",
+            "editora": "HarperCollins",
+            "ano_publicacao": 1960,
+            "genero": "Ficção",
+            "quantidade_disponivel": 8,
+            "descricao": "Uma reflexão sobre racismo e justiça no sul dos Estados Unidos."
+        }
+    },
+    {
+        "model": "pages.livro",
+        "pk": 11,
+        "fields": {
+            "isbn": "978-0-385-66287-0",
+            "titulo": "O Morro dos Ventos Uivantes",
+            "autor": "Emily Brontë",
+            "editora": "Editora Nova Fronteira",
+            "ano_publicacao": 1847,
+            "genero": "Romance",
+            "quantidade_disponivel": 3,
+            "descricao": "Uma história intensa de amor e vingança."
+        }
+    },
+    {
+        "model": "pages.livro",
+        "pk": 12,
+        "fields": {
+            "isbn": "978-0-06-112008-4",
+            "titulo": "O Apanhador no Campo de Centeio",
+            "autor": "J.D. Salinger",
+            "editora": "Little, Brown and Company",
+            "ano_publicacao": 1951,
+            "genero": "Ficção",
+            "quantidade_disponivel": 10,
+            "descricao": "A jornada de um adolescente em busca de identidade."
+        }
+    },
+    {
+        "model": "pages.livro",
+        "pk": 13,
+        "fields": {
+            "isbn": "978-0-451-52955-4",
+            "titulo": "A Metamorfose",
+            "autor": "Franz Kafka",
+            "editora": "Editora Record",
+            "ano_publicacao": 1915,
+            "genero": "Ficção",
+            "quantidade_disponivel": 4,
+            "descricao": "A transformação de Gregor Samsa em um inseto e suas consequências."
+        }
+    },
+    {
+        "model": "pages.livro",
+        "pk": 14,
+        "fields": {
+            "isbn": "978-0-06-083405-4",
+            "titulo": "O Grande Gatsby",
+            "autor": "F. Scott Fitzgerald",
+            "editora": "Scribner",
+            "ano_publicacao": 1925,
+            "genero": "Romance",
+            "quantidade_disponivel": 6,
+            "descricao": "Uma crítica à era do jazz e ao sonho americano."
+        }
+    },
+    {
+        "model": "pages.livro",
+        "pk": 15,
+        "fields": {
+            "isbn": "978-0-06-235024-1",
+            "titulo": "A Guerra dos Tronos",
+            "autor": "George R.R. Martin",
+            "editora": "Editora Leya",
+            "ano_publicacao": 1996,
+            "genero": "Fantasia",
+            "quantidade_disponivel": 9,
+            "descricao": "O primeiro livro da saga 'As Crônicas de Gelo e Fogo'."
+        }
+    },
+    {
+        "model": "pages.livro",
+        "pk": 16,
+        "fields": {
+            "isbn": "888-0-08-083408-8",
+            "titulo": "Livro Teste",
+            "autor": "Autor Exemplo",
+            "editora": "Editora exemplo",
+            "ano_publicacao": 2024,
+            "genero": "Ficção",
+            "quantidade_disponivel": 1,
+            "descricao": "Esse é um livro teste"
+        }
+    },
+    {
+        "model": "pages.emprestimo",
+        "pk": 1,
+        "fields": {
+            "status": "em_aberto",
+            "data_emprestimo": "2024-11-04",
+            "data_devolucao": "2024-11-11",
+            "fk_usuario": 3,
+            "fk_livro": 3,
+            "observacoes": null
+        }
+    },
+    {
+        "model": "pages.emprestimo",
+        "pk": 2,
+        "fields": {
+            "status": "concluido",
+            "data_emprestimo": "2024-11-04",
+            "data_devolucao": "2024-11-11",
+            "fk_usuario": 1,
+            "fk_livro": 10,
+            "observacoes": null
+        }
+    },
+    {
+        "model": "pages.emprestimo",
+        "pk": 3,
+        "fields": {
+            "status": "em_aberto",
+            "data_emprestimo": "2024-11-04",
+            "data_devolucao": "2024-11-15",
+            "fk_usuario": 1,
+            "fk_livro": 5,
+            "observacoes": null
+        }
+    },
+    {
+        "model": "pages.emprestimo",
+        "pk": 4,
+        "fields": {
+            "status": "em_aberto",
+            "data_emprestimo": "2024-11-04",
+            "data_devolucao": "2024-11-11",
+            "fk_usuario": 3,
+            "fk_livro": 9,
+            "observacoes": null
+        }
+    },
+    {
+        "model": "pages.emprestimo",
+        "pk": 5,
+        "fields": {
+            "status": "em_aberto",
+            "data_emprestimo": "2024-11-05",
+            "data_devolucao": "2024-11-20",
+            "fk_usuario": 2,
+            "fk_livro": 15,
+            "observacoes": null
+        }
+    },
+    {
+        "model": "pages.emprestimo",
+        "pk": 6,
+        "fields": {
+            "status": "em_aberto",
+            "data_emprestimo": "2024-11-05",
+            "data_devolucao": "2024-11-15",
+            "fk_usuario": 5,
+            "fk_livro": 13,
+            "observacoes": null
+        }
+    },
+    {
+        "model": "pages.emprestimo",
+        "pk": 7,
+        "fields": {
+            "status": "concluido",
+            "data_emprestimo": "2024-11-05",
+            "data_devolucao": "2024-11-05",
+            "fk_usuario": 2,
+            "fk_livro": 14,
+            "observacoes": null
+        }
+    },
+    {
+        "model": "pages.emprestimo",
+        "pk": 8,
+        "fields": {
+            "status": "concluido",
+            "data_emprestimo": "2024-11-05",
+            "data_devolucao": "2024-11-12",
+            "fk_usuario": 1,
+            "fk_livro": 16,
+            "observacoes": null
+        }
+    },
+    {
+        "model": "pages.emprestimo",
+        "pk": 9,
+        "fields": {
+            "status": "concluido",
+            "data_emprestimo": "2024-11-05",
+            "data_devolucao": "2024-11-12",
+            "fk_usuario": 5,
+            "fk_livro": 16,
+            "observacoes": null
+        }
+    },
+    {
+        "model": "pages.emprestimo",
+        "pk": 10,
+        "fields": {
+            "status": "concluido",
+            "data_emprestimo": "2024-11-05",
+            "data_devolucao": "2024-11-05",
+            "fk_usuario": 5,
+            "fk_livro": 16,
+            "observacoes": null
+        }
+    },
+    {
+        "model": "pages.emprestimo",
+        "pk": 11,
+        "fields": {
+            "status": "concluido",
+            "data_emprestimo": "2024-11-05",
+            "data_devolucao": "2024-11-05",
+            "fk_usuario": 5,
+            "fk_livro": 16,
+            "observacoes": null
+        }
+    },
+    {
+        "model": "pages.emprestimo",
+        "pk": 12,
+        "fields": {
+            "status": "concluido",
+            "data_emprestimo": "2024-11-05",
+            "data_devolucao": "2024-11-05",
+            "fk_usuario": 5,
+            "fk_livro": 16,
+            "observacoes": null
+        }
+    },
+    {
+        "model": "pages.emprestimo",
+        "pk": 13,
+        "fields": {
+            "status": "em_aberto",
+            "data_emprestimo": "2024-11-03",
+            "data_devolucao": "2024-11-20",
+            "fk_usuario": 1,
+            "fk_livro": 2,
+            "observacoes": null
+        }
+    },
+    {
+        "model": "pages.emprestimo",
+        "pk": 14,
+        "fields": {
+            "status": "em_aberto",
+            "data_emprestimo": "2024-11-05",
+            "data_devolucao": "2024-11-12",
+            "fk_usuario": 2,
+            "fk_livro": 1,
+            "observacoes": null
+        }
+    },
+    {
+        "model": "pages.emprestimo",
+        "pk": 15,
+        "fields": {
+            "status": "solicitado",
+            "data_emprestimo": "2024-11-06",
+            "data_devolucao": "2024-11-13",
+            "fk_usuario": 2,
+            "fk_livro": 8,
+            "observacoes": null
+        }
+    },
+    {
+        "model": "pages.emprestimo",
+        "pk": 16,
+        "fields": {
+            "status": "concluido",
+            "data_emprestimo": "2024-11-06",
+            "data_devolucao": "2024-11-06",
+            "fk_usuario": 2,
+            "fk_livro": 13,
+            "observacoes": null
+        }
+    },
+    {
+        "model": "pages.emprestimo",
+        "pk": 17,
+        "fields": {
+            "status": "em_aberto",
+            "data_emprestimo": "2024-11-06",
+            "data_devolucao": "2024-11-13",
+            "fk_usuario": 5,
+            "fk_livro": 11,
+            "observacoes": null
+        }
+    },
+    {
+        "model": "pages.emprestimo",
+        "pk": 18,
+        "fields": {
+            "status": "em_aberto",
+            "data_emprestimo": "2024-11-06",
+            "data_devolucao": "2024-11-13",
+            "fk_usuario": 1,
+            "fk_livro": 1,
+            "observacoes": null
+        }
+    },
+    {
+        "model": "pages.emprestimo",
+        "pk": 19,
+        "fields": {
+            "status": "em_aberto",
+            "data_emprestimo": "2024-11-06",
+            "data_devolucao": "2024-11-13",
+            "fk_usuario": 3,
+            "fk_livro": 11,
+            "observacoes": null
+        }
+    },
+    {
+        "model": "pages.emprestimo",
+        "pk": 20,
+        "fields": {
+            "status": "solicitado",
+            "data_emprestimo": "2024-11-05",
+            "data_devolucao": "2024-11-25",
+            "fk_usuario": 5,
+            "fk_livro": 12,
+            "observacoes": null
+        }
+    },
+    {
+        "model": "pages.emprestimo",
+        "pk": 21,
+        "fields": {
+            "status": "solicitado",
+            "data_emprestimo": "2024-11-06",
+            "data_devolucao": "2024-12-12",
+            "fk_usuario": 3,
+            "fk_livro": 2,
+            "observacoes": null
+        }
+    }
+]
