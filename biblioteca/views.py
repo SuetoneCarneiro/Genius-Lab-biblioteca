@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.forms import HiddenInput
-from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404, redirect
 from django.views.generic.list import ListView
 from biblioteca.forms import RelatorioFiltroForm
 from pages.models import Livro, Emprestimo
@@ -40,6 +40,12 @@ class EmprestimoView(LoginRequiredMixin, CreateView):
             # Campos ocultos tenham os valores certos
             form.fields['fk_usuario'].initial = self.request.user
             form.fields['status'].initial = 'solicitado'
+
+        livro_id = self.request.GET.get('livro_id')
+        if livro_id:
+            livro = get_object_or_404(Livro, id=livro_id)
+            form.instance.fk_livro = livro
+            form.fields['fk_livro'].initial = livro
 
         return form
 

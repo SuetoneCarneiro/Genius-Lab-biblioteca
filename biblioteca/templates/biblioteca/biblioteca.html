@@ -30,7 +30,7 @@
                     <p class="card-text"><strong>Gênero:</strong> {{ livro.genero }}</p>
                     <p class="card-text"><strong>Quantidade disponível:</strong> {{ livro.quantidade_disponivel }}</p>
                     <p class="card-text">{{ livro.descricao }}</p>
-                    <a href="{% url 'emprestimo' %}" class="btn btn-primary">Solicitar empréstimo</a>
+                    <a href="{% url 'emprestimo' %}?livro_id={{ livro.id }}" class="btn btn-primary">Solicitar empréstimo</a>
                 </div>
             </div>
         </div>
