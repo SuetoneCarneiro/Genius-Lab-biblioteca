@@ -1,5 +1,6 @@
 # Projeto Genius Lab
 
+![Tela inicial da biblioteca](./print_genius_lab.png)
 Esse é um sistema de gestão de bibliotecas desenvolvido em Django integrado com banco de dados PostgreSQL. O projeto tem como finalidade a gestão de uma biblioteca chamada 'Genius Lab', de acordo com as regras de negócio a seguir.
 
 ## Regras de Negócio
@@ -110,3 +111,15 @@ Acesse a aplicação em http://127.0.0.1:8000/ no seu navegador. Se você criou 
 
 `Usuário: leitor`<br>
 `Senha: senhaforte`
+
+### Desenvolvido por
+<table>
+<td align="center">
+      <a href="https://github.com/suetonecarneiro" title="gitHub">
+        <img src="https://avatars.githubusercontent.com/u/148480989?v=4" width="100px;" alt="Foto de Suetone"/><br>
+        <sub>
+          <b>Suetone Carneiro</b>
+        </sub>
+      </a>
+    </td>
+</table>
